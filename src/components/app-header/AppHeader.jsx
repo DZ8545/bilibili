@@ -12,6 +12,7 @@ import MessageIcon from "../../assets/svg/MessageIcon";
 import PopularIcon from "../../assets/svg/PopularIcon";
 import SearchIcon from "../../assets/svg/SearchIcon";
 import UploadIcon from "../../assets/svg/UploadIcon";
+import category from "@/assets/data/category";
 
 const HeaderWrapper = styled.header`
   .cover {
@@ -249,6 +250,31 @@ const HeaderWrapper = styled.header`
         }
       }
     }
+    .right_channel_contain {
+      display: flex;
+      align-items: center;
+      .channel_items_left {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-right: 30px;
+        .categoryItem {
+          letter-spacing: 2px;
+          font-size: 14px;
+          height: 30px;
+          line-height: 30px;
+          border-radius: 6px;
+          color: #61666d;
+          font-weight: 400;
+          text-align: center;
+          transition: background-color 0.3s, color 0.3s;
+          border: 1px solid #f1f2f3;
+          background-color: #f6f7f8;
+          min-width: 80px;
+          margin-right: 10px;
+        }
+      }
+    }
   }
 `;
 const AppHeader = memo(() => {
@@ -380,8 +406,18 @@ const AppHeader = memo(() => {
           </div>
         </div>
         <div className="right_channel_contain">
-          <div className="channel_items_left"></div>
-          <div className="channel_items_right"></div>
+          <div className="channel_items_left">
+            {category.slice(0, 23).map((item) => {
+              return (
+                <div className="categoryItem" key={item.name}>
+                  {item.name}
+                </div>
+              );
+            })}
+          </div>
+          <div className="channel_items_right">
+              
+          </div>
         </div>
       </div>
     </HeaderWrapper>
